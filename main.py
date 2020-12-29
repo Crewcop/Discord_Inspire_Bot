@@ -9,12 +9,12 @@ from keep_alive import keep_alive
 
 client = discord.Client()
 
-sad_words = ['sad', 'depressed', 'unhappy']
+sad_words = ['trump', 'donald', 'republicans']
 
 starter_encouragements = [
-  'Cheer up buddy',
-  'Hang in there!',
-  'You are great!'
+  'They will not be back for awhile.',
+  'They are a bunch of buttbags!',
+  'The hot air is now out of the bag!'
 ]
 
 if 'responding' not in db.keys():
@@ -50,7 +50,7 @@ async def on_message(message):
     return
 
   msg = message.content
-    
+
   if message.content.startswith('$inspire'):
     quote = get_quote()
     await message.channel.send(quote)
@@ -63,7 +63,7 @@ async def on_message(message):
 
     if any(word in msg for word in sad_words):
       await message.channel.send(random.choice(options))
-    
+
   if msg.startswith('$new'):
     encouraging_message = msg.split('$new ', 1)[1]
     update_encouragements(encouraging_message)
